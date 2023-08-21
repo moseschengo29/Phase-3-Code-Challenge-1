@@ -4,33 +4,40 @@ hour = input('Enter hour: ')
 minutes = input('Enter minutes: ')
 period = input('Enter period (am/pm): ')
 
+
+
 def time(hour, minute, period):
-    if 1 <= int(hour) <= 12 and 0 <= int(minute) <= 59 and period in ('pm', 'am'):
-        if period == 'am':
-            if int(hour) < 10:
-                hour = '0' + hour
-            if hour == '12':
-                hour = '00'
-            else :
-                hour = hour
+    if hour.isdigit() and minute.isdigit():
+        if 1 <= int(hour) <= 12 and 0 <= int(minute) <= 59 and period in ('pm', 'am'):
+            if period == 'am':
+                if int(hour) < 10:
+                    hour = '0' + hour
+                if hour == '12':
+                    hour = '00'
+                else :
+                    hour = hour
+                
+                if int(minute) < 10:
+                        minute = '0' + minute            
+                        print(f'{hour}{minute}hrs')
             
-            if int(minute) < 10:
-                    minute = '0' + minute            
-                    print(f'{hour}{minute}hrs')
-        
-        if period == 'pm':
-            if hour == '12':
-                hour == '12'
-            else :
-                hour = int(hour) + 12
-            if int(minute) < 10:
-                minute = '0' + minute       
-        print(f'Time in 24 hour system: {hour}{minute}hrs' )
-        print() # add a space below
-         
+            if period == 'pm':
+                if hour == '12':
+                    hour == '12'
+                    
+                else :
+                    hour = int(hour) + 12
+                if int(minute) < 10:
+                    minute = '0' + minute       
+            print(f'Time in 24 hour system: {hour}{minute}hrs' )
+            print() # add a space below
+            
+        else:
+            print('Hour must be between 1 - 12, minutes must be between 0 - 59, period must be either am or pm') 
+            print() # add a space below
     else:
-        print('Hour must be between 1 - 12, minutes must be between 0 - 59, period must be either am or pm') 
-        print() # add a space below
+        print('Hour and minutes must be a number! ')
+        exit()        
         
                    
 time(hour, minutes, period) 
